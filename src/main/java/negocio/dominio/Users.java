@@ -4,13 +4,13 @@ import java.util.*;
 
 public abstract class Users {
 
-	protected long userID;
-	protected long telefono;
-	protected String contrasenia;
-	protected String nombre;
-	protected String apellido;
-	protected ArrayList<Viajes> listaViajes = new ArrayList<Viajes>();
-	protected Calendar fechaNac;
+	private long userID;
+	private long telefono;
+	private String contrasenia;
+	private String nombre;
+	private String apellido;
+	private ArrayList<Viajes> listaViajes = new ArrayList<Viajes>();
+	private Calendar fechaNac;
 
 	public Users() {
 	}
