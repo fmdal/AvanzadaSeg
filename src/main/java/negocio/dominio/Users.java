@@ -4,7 +4,7 @@ import java.util.*;
 
 public abstract class Users {
 
-	protected String userID;
+	protected long userID;
 	protected long telefono;
 	protected String contrasenia;
 	protected String nombre;
@@ -15,7 +15,7 @@ public abstract class Users {
 	public Users() {
 	}
 
-	public Users(String userID, long telefono, String contrasenia, String nombre, String apellido,
+	public Users(long userID, long telefono, String contrasenia, String nombre, String apellido,
 			ArrayList<Viajes> listaViajes, Calendar fechaNac) {
 		// TODO Auto-generated constructor stub
 		this.userID = userID;
@@ -48,11 +48,11 @@ public abstract class Users {
 //		this.fechaNac = fechaNac;
 //	}
 
-	public String getUserID() {
+	public long getUserID() {
 		return userID;
 	}
 
-	public void setUserID(String userID) {
+	public void setUserID(long userID) {
 		this.userID = userID;
 	}
 
