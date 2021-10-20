@@ -5,35 +5,45 @@
 	<form method="post" action="ChoferesController">
 
 		<div style="text-align: left;">
-			<label>Patente</label>
-			<input type="text" id="patente" name="patente" required="required" />
+			<label>DNI</label>
+			<input type="text" id="userID" name="userID" required="required" />
+		</div>
+		
+				<div style="text-align: center;">
+			<br /> <label>Contraseña</label>
+			<input type="password" id="pass" name="pass" required="required" />
 		</div>
 
 		<div style="text-align: left;">
-			<label>Marca</label>
-			<input type="text" id="marca" name="marca" required="required" />
+			<label>Nombre</label>
+			<input type="text" id="nombre" name="nombre" required="required" />
 		</div>
 
 		<div style="text-align: left;">
-			<label>Modelo</label>
-			<input type="text" id="modelo" name="modelo" required="required" />
+			<label>Apellido</label>
+			<input type="text" id="apellido" name="apellido" required="required" />
+		</div>
+		
+		<div style="text-align: left;">
+			<label>Fecha de nacimiento</label>
+			<input type="text" id="fechaNac" name="fechaNac" required="required" />
 		</div>
 
 		<div style="text-align: left;">
-			<label>Capacidad del tanque de nafta</label>
-			<input type="text" id="tanqueNafta" name="tanqueNafta" required="required" />
+			<label>Telefono</label>
+			<input type="text" id="telefono" name="telefono" required="required" />
 		</div>
-
-		<div style="text-align: left;">
-			<label>Peso maximo</label>
-			<input type="text" id="pesoMax" name="pesoMax" required="required" />
-		</div>
-
-		<div style="text-align: left;">
-			<label>Consumo de litros de nafta por kilometro</label>
+	
+			<div style="text-align: left;">
+			<label>Categoria</label>
 			<input type="text" id="litrosxKm" name="litrosxKm" required="required" />
 		</div>
-
+		
+					<div style="text-align: left;">
+			<label>Lista de Camiones</label>
+			<input type="text" id="listaCamiones" name="listaCamiones" required="required" />
+		</div>
+		
 
 		<input id="accion" name="accion" type="hidden" value="alta">
 

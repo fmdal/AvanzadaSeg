@@ -33,7 +33,7 @@
 			<label>Consumo de litros de nafta por kilometro</label>
 			<input type="number" id="litrosxKm" name="litrosxKm" required="required" />
 		</div>
-
+		
 
 		<input id="accion" name="accion" type="hidden" value="alta">
 
