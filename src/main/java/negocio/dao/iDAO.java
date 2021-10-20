@@ -35,4 +35,6 @@ public interface iDAO<T> {
 	public ArrayList<T> getLista();
 
 	public T findId(long l);
+
+	public boolean deleteById(long l);
 }
