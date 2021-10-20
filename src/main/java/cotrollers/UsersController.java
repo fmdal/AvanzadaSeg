@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 import negocio.dao.iDAO;
-import negocio.dao.factory.AdminsFactory;
 import negocio.dao.factory.UsersFactory;
-import negocio.dominio.Admins;
 import negocio.dominio.Users;
 
 /**
@@ -51,7 +49,7 @@ public class UsersController extends HttpServlet {
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Users> usersDAO = UsersFactory.getImplementation("DB"); 
+			iDAO<Users> usersDAO = UsersFactory.getImplementation("DB");
 
 			if (request.getParameter("accion").equals("alta")) {
 				Users user = new Users();
@@ -85,7 +83,28 @@ public class UsersController extends HttpServlet {
 
 			} else if (request.getParameter("accion").equals("busca")) {
 
-				Users cli = (Users) usersDAO.findId(Long.parseLong(request.getParameter("userID")));
+				Users usr = (Users) usersDAO.findId(Long.parseLong(request.getParameter("userID")));
+
+			} else if (request.getParameter("accion").equals("login")) {
+
+				Users usr = (Users) usersDAO.findId(Long.parseLong(request.getParameter("userID")));
+
+				if (usr.getContrasenia() != null && usr.getContrasenia().equals(request.getParameter("contrasenia"))) {
+
+					Cookie cookieUs = new Cookie("userID", URLEncoder.encode(request.getParameter("userID"), "UTF-8"));
+					Cookie cookieClave = new Cookie("contrasenia",
+							URLEncoder.encode(request.getParameter("contrasenia"), "UTF-8"));
+					cookieUs.setMaxAge(365 * 24 * 60 * 60);
+					cookieClave.setMaxAge(365 * 24 * 60 * 60);
+					response.addCookie(cookieUs);
+					response.addCookie(cookieClave);
+
+					HttpSession misession = request.getSession(true);
+					misession.setAttribute("userID", request.getParameter("userID"));
+
+					destino = "perfilAdmin.jsp";
+
+				}
 
 			} else {
 				request.getSession().setAttribute("Error", "Tipo de accion incorrecta");
