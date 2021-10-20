@@ -47,7 +47,7 @@ public class AdminsController extends HttpServlet {
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Clientes> clienteDAO = ClientesFactory.getImplementation("BD");
+			iDAO<Admins> adminsDAO = AdminsFactory.getImplementation("BB"); //BB, no xxx"BD"xxx
 
 			if (request.getParameter("accion").equals("alta")) {
 			} else if (request.getParameter("accion").equals("baja")) {

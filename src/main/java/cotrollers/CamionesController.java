@@ -47,7 +47,7 @@ public class CamionesController extends HttpServlet {
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Clientes> clienteDAO = ClientesFactory.getImplementation("BD");
+			iDAO<Camiones> camionesDAO = CamionesFactory.getImplementation("BB");
 
 			if (request.getParameter("accion").equals("alta")) {
 			} else if (request.getParameter("accion").equals("baja")) {

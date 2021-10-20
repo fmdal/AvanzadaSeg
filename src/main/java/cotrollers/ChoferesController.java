@@ -47,7 +47,7 @@ public class ChoferesController extends HttpServlet {
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Clientes> clienteDAO = ClientesFactory.getImplementation("BD");
+			iDAO<Choferes> choferesDAO = ChoferesFactory.getImplementation("BB");
 
 			if (request.getParameter("accion").equals("alta")) {
 			} else if (request.getParameter("accion").equals("baja")) {
