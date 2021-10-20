@@ -19,19 +19,19 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 		@Override
 		public boolean add(Camiones elemento) {
 
-			String sql = "INSERT INTO users(userID, nombre, apellido, contrasenia, fechaNac, telefono, categoria, listaCamiones) VALUES (?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO camiones(patente, marca, modelo, tanqueNafta, pesoMax, litrosxKm) VALUES (?,?,?,?,?,?)";
 
 			try {
 				Connection con = Conexion.getConnection();
 
 				PreparedStatement ps = con.prepareStatement(sql);
 
-				ps.setString(1, elemento.getUserID());
-				ps.setString(2, elemento.getNombre());
-				ps.setString(3, elemento.getApellido());
-				ps.setString(4, elemento.getContrasenia());
-				ps.setString(5, elemento.getFechaNac());
-				ps.setString(6, elemento.getTelefono());
+				ps.setString(1, elemento.getPatente());
+				ps.setString(2, elemento.getMarca());
+				ps.setString(3, elemento.getModelo());
+				ps.setString(4, elemento.getTanqueNafta());
+				ps.setString(5, elemento.getPesoMax());
+				ps.setString(6, elemento.getLitrosxKm());
 
 				ps.execute();
 
@@ -91,29 +91,28 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 		@Override
 		public ArrayList<Users> getLista() {
 
-			ArrayList<Users> usuarios = new ArrayList<>();
+			ArrayList<Camiones> camiones = new ArrayList<>();
 
 			Connection con = null;
 			PreparedStatement prep = null;
 
 			try {
 				con = Conexion.getConnection();
-				prep = con.prepareStatement("SELECT * FROM users");
+				prep = con.prepareStatement("SELECT * FROM camiones");
 
 				ResultSet rs = prep.executeQuery();
 
 				while (rs.next()) {
 
-					Users usuario = new Users();
+					Camiones camion = new Camiones();
 
-					usuario.setUserID(rs.getLong("userID"));
-					usuario.setNombre(rs.getString("nombre"));
-					usuario.setApellido(rs.getString("apellido"));
-					usuario.setContrasenia(rs.getString("contrasenia"));
-					usuario.setFechaNac(rs.getString("contrasenia"));
-					usuario.setTelefono(rs.getLong("telefono"));
-
-					usuarios.add(usuario);
+					camion.setPatente(rs.getString("patente"));
+					camion.setMarca(rs.getString("marca"));
+					camion.setModelo(rs.getString("modelo"));
+					camion.setTanqueNafta(rs.getdouble("tanqueNafta"));
+					camion.setPesoMax(rs.getDouble("pesoMax"));
+					camion.setListrosxKm(rs.getDouble("litrosxKm"));
+					camiones.add(camion);
 				}
 				prep.close();
 
@@ -121,7 +120,7 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 				e.printStackTrace();
 			}
 
-			return usuarios;
+			return camiones;
 		}
 
 		@Override
@@ -131,13 +130,13 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 		@Override
 		@Override
 		@Override
-		public Users findId(long l) {
+		public Camion findId(long l) {
 
 			Connection con = null;
 			PreparedStatement prep = null;
 
 			try {
-				String sql = "SELECT * FROM users WHERE id=?";
+				String sql = "SELECT * FROM camiones WHERE patente=?";
 
 				con = Conexion.getConnection();
 				prep = con.prepareStatement(sql);
@@ -146,18 +145,19 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 
 				ResultSet rs = prep.executeQuery();
 
-				Users usuario = new Users();
+				Camiones camion = new Camiones();
 
 				if (rs.next()) {
-					usuario.setUserID(rs.getLong("userID"));
-					usuario.setNombre(rs.getString("nombre"));
-					usuario.setApellido(rs.getString("apellido"));
-					usuario.setContrasenia(rs.getString("contrasenia"));
-					usuario.setFechaNac(rs.getString("contrasenia"));
-					usuario.setTelefono(rs.getLong("telefono"));
+					camion.setUserID(rs.getString("patente"));
+					camion.setNombre(rs.getString("marca"));
+					camion.setApellido(rs.getString("modelo"));
+					camion.setContrasenia(rs.getdouble("tanqueNafta"));
+					camion.setFechaNac(rs.getDouble("pesoMax"));
+					camion.setTelefono(rs.getDouble("litrosxKm"));
+
 
 				}
-				return usuario;
+				return camion;
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
@@ -170,7 +170,7 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 		@Override
 		public boolean deleteById(long l) {
 
-			String sql = "UPDATE users SET activo=0 WHERE userID=?";
+			String sql = "UPDATE users SET activo=0 WHERE patente=?";
 
 			try {
 				Connection con = Conexion.getConnection();
