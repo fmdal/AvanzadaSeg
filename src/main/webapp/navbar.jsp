@@ -15,7 +15,7 @@
 				<li class="nav-item"><a class="nav-link" href="modifChofer.jsp">Mod. de Chofer</a></li>
 				<li class="nav-item"><a class="nav-link" href="cargarViaje.jsp">Cargar Viaje</a></li>
 			</ul>
-			
+
 		</div>
 	</div>
 </nav>
