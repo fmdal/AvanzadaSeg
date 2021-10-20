@@ -26,12 +26,6 @@ public interface iDAO<T> {
 
 	public boolean add(T elemento);
 
-	public Object get(Object elemento);
-
-	public boolean save();
-
-	public boolean delete();
-
 	public ArrayList<T> getLista();
 
 	public T findId(long l);
