@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
+
+import negocio.dao.iDAO;
+
 /**
  * Servlet implementation class Controller
  */
@@ -38,8 +42,28 @@ public class ChoferesController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		String destino;
+
+		if (request.getParameter("accion") != null) {
+
+			iDAO<Clientes> clienteDAO = ClientesFactory.getImplementation("BD");
+
+			if (request.getParameter("accion").equals("alta")) {
+			} else if (request.getParameter("accion").equals("baja")) {
+			} else if (request.getParameter("accion").equals("modif")) {
+			} else if (request.getParameter("accion").equals("busca")) {
+			} else {
+				request.getSession().setAttribute("Error", "Tipo de accion incorrecta");
+				destino = "error.jsp";
+			}
+
+		} else {
+			request.getSession().setAttribute("Error", "Se requiere que haya una accion");
+			destino = "error.jsp";
+		}
+
+		request.getRequestDispatcher(destino).forward(request, response);
 	}
 
 }
