@@ -1,50 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<div style="text-align: center;">
-    <h1>Logistica camioncito</h1>
-    <p></p>
-    </div>
-<link
- href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
- rel="stylesheet" id="bootstrap-css">
-<script
- src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script
- src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link
- href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
- rel="stylesheet"
- integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
- crossorigin="anonymous">
-<script
- src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
- integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
- crossorigin="anonymous"></script>
-<script
- src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
- integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
- crossorigin="anonymous"></script>
-<meta charset="ISO-8859-1">
-<title>Login</title>
-</head>
-<body>
-<form method="post" action="usuario">
- <div style="text-align: center;">
-  <label>DNI</label> <input type="text" id="user" name="user" size="50" required="required"
-    />
+<jsp:include page="/Fran/header.jsp"></jsp:include>
+<jsp:include page="/Fran/navbar.jsp"></jsp:include>
+
+<div class="container" style="padding: 20px">
+	<form method="post" action="">
+		<div style="text-align: center;">
+			<label>DNI</label> <input type="text" id="user" name="user" size="50" required="required" />
+		</div>
+		<div style="text-align: center;">
+			<br /> <label>Contraseña</label> <input type="password" id="pass" name="pass" size="50" required="required" />
+		</div>
+
+		<p style="text-align: center;">
+			<button type="submit" class="btn btn-primary">Ingresar</button>
+		</p>
+	</form>
 </div>
-  <div style="text-align: center;">
-   <br /> <label>Contraseña</label> <input type="password" id="pass"
-    name="pass" size="50" required="required"
-     />
-  </div>
- 
-  <p style="text-align: center;">
-   <button type="submit" class="btn btn-primary">Ingresar</button>
-  </p>
- </form>
-</body>
-</html>
+
+<jsp:include page="/Fran/footer.html"></jsp:include>
