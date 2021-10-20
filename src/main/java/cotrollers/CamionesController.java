@@ -57,34 +57,32 @@ public class CamionesController extends HttpServlet {
 			if (request.getParameter("accion").equals("alta")) {
 				Camiones camion = new Camiones();
 
-				admin.setPatente(request.getParameter("patente"));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setTanqueNafta(Double.parseDouble(request.getParameter("telefono")));
-				admin.setPesoMax(Double.parseDouble(request.getParameter("pesoMax")));
-				admin.setLitrosxKm(Double.parseDouble(request.getParameter("listrosxKm")));
+				camion.setPatente(request.getParameter("patente"));
+				camion.setContrasenia(request.getParameter("contrasenia"));
+				camion.setTanqueNafta(Double.parseDouble(request.getParameter("telefono")));
+				camion.setPesoMax(Double.parseDouble(request.getParameter("pesoMax")));
+				camion.setLitrosxKm(Double.parseDouble(request.getParameter("listrosxKm")));
 
-				adminsDAO.add(admin);
+				camionesDAO.add(camion);
 
 			} else if (request.getParameter("accion").equals("baja")) {
 
-				adminsDAO.deleteById(request.getParameter("userID"));
+				camionesDAO.deleteById(request.getParameter("userID"));
 
 			} else if (request.getParameter("accion").equals("modif")) {
-				Admins admin = new Admins();
+				Camiones camion = new Camiones();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				camion.setPatente(request.getParameter("patente"));
+				camion.setContrasenia(request.getParameter("contrasenia"));
+				camion.setTanqueNafta(Double.parseDouble(request.getParameter("telefono")));
+				camion.setPesoMax(Double.parseDouble(request.getParameter("pesoMax")));
+				camion.setLitrosxKm(Double.parseDouble(request.getParameter("listrosxKm")));
 
-				adminsDAO.save(admin);
+				camionesDAO.save(camion);
 
 			} else if (request.getParameter("accion").equals("busca")) {
 
-				Admins cli = (Admins) adminsDAO.findId(Long.parseLong(request.getParameter("userID")));
+				Camiones cli = (Camiones) camionDAO.findId(Long.parseLong(request.getParameter("userID")));
 
 			} else {
 				request.getSession().setAttribute("Error", "Tipo de accion incorrecta");

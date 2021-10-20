@@ -52,15 +52,15 @@ public class ViajesController extends HttpServlet {
 			iDAO<Admins> adminsDAO = AdminsFactory.getImplementation("DB"); 
 
 			if (request.getParameter("accion").equals("alta")) {
-				Admins admin = new Admins();
+				Viajes viajes = new Viajes();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				viajes.setUserID(request.getParameter("userID"));
+				viajes.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				viajes.setContrasenia(request.getParameter("contrasenia"));
+				viajes.setNombre(request.getParameter("nombre"));
+				viajes.setApellido(request.getParameter("apellido"));
+				viajes.setFechaNac(request.getParameter("fechaNac"));
+//				viajes.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
 
 				adminsDAO.add(admin);
 
@@ -71,13 +71,13 @@ public class ViajesController extends HttpServlet {
 			} else if (request.getParameter("accion").equals("modif")) {
 				Admins admin = new Admins();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				viajes.setUserID(request.getParameter("userID"));
+				viajes.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				viajes.setContrasenia(request.getParameter("contrasenia"));
+				viajes.setNombre(request.getParameter("nombre"));
+				viajes.setApellido(request.getParameter("apellido"));
+				viajes.setFechaNac(request.getParameter("fechaNac"));
+//				viajes.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
 
 				adminsDAO.save(admin);
 

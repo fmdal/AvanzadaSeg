@@ -12,7 +12,9 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 import negocio.dao.iDAO;
 import negocio.dao.factory.AdminsFactory;
+import negocio.dao.factory.UsersFactory;
 import negocio.dominio.Admins;
+import negocio.dominio.Users;
 
 /**
  * Servlet implementation class Controller
@@ -49,41 +51,41 @@ public class UsersController extends HttpServlet {
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Admins> adminsDAO = AdminsFactory.getImplementation("DB"); 
+			iDAO<Users> usersDAO = UsersFactory.getImplementation("DB"); 
 
 			if (request.getParameter("accion").equals("alta")) {
-				Admins admin = new Admins();
+				Users user = new Users();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				user.setUserID(request.getParameter("userID"));
+				user.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				user.setContrasenia(request.getParameter("contrasenia"));
+				user.setNombre(request.getParameter("nombre"));
+				user.setApellido(request.getParameter("apellido"));
+				user.setFechaNac(request.getParameter("fechaNac"));
+//				user.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
 
-				adminsDAO.add(admin);
+				usersDAO.add(user);
 
 			} else if (request.getParameter("accion").equals("baja")) {
 
-				adminsDAO.deleteById(request.getParameter("userID"));
+				usersDAO.deleteById(request.getParameter("userID"));
 
 			} else if (request.getParameter("accion").equals("modif")) {
-				Admins admin = new Admins();
+				Users user = new Users();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				user.setUserID(request.getParameter("userID"));
+				user.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				user.setContrasenia(request.getParameter("contrasenia"));
+				user.setNombre(request.getParameter("nombre"));
+				user.setApellido(request.getParameter("apellido"));
+				user.setFechaNac(request.getParameter("fechaNac"));
+//				user.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
 
-				adminsDAO.save(admin);
+				usersDAO.save(user);
 
 			} else if (request.getParameter("accion").equals("busca")) {
 
-				Admins cli = (Admins) adminsDAO.findId(Long.parseLong(request.getParameter("userID")));
+				Users cli = (Users) usersDAO.findId(Long.parseLong(request.getParameter("userID")));
 
 			} else {
 				request.getSession().setAttribute("Error", "Tipo de accion incorrecta");

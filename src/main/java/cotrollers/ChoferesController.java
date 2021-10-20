@@ -13,6 +13,7 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 import negocio.dao.iDAO;
 import negocio.dao.factory.AdminsFactory;
 import negocio.dominio.Admins;
+import negocio.dominio.Choferes;
 
 /**
  * Servlet implementation class Controller
@@ -49,41 +50,42 @@ public class ChoferesController extends HttpServlet {
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Admins> adminsDAO = AdminsFactory.getImplementation("DB"); 
+			iDAO<Choferes> choferesDAO = ChoferesFactory.getImplementation("DB"); 
 
 			if (request.getParameter("accion").equals("alta")) {
-				Admins admin = new Admins();
+				Choferes chofer = new Choferes();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				chofer.setUserID(request.getParameter("userID"));
+				chofer.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				chofer.setContrasenia(request.getParameter("contrasenia"));
+				chofer.setNombre(request.getParameter("nombre"));
+				chofer.setApellido(request.getParameter("apellido"));
+//				chofer.setFechaNac(request.getParameter("fechaNac"));
+				chofer.setCategoria(request.getParameter("categoria"));
 
-				adminsDAO.add(admin);
+
+				choferesDAO.add(chofer);
 
 			} else if (request.getParameter("accion").equals("baja")) {
 
-				adminsDAO.deleteById(request.getParameter("userID"));
+				choferesDAO.deleteById(request.getParameter("userID"));
 
 			} else if (request.getParameter("accion").equals("modif")) {
-				Admins admin = new Admins();
+				Choferes chofer = new Choferes();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				chofer.setUserID(request.getParameter("userID"));
+				chofer.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				chofer.setContrasenia(request.getParameter("contrasenia"));
+				chofer.setNombre(request.getParameter("nombre"));
+				chofer.setApellido(request.getParameter("apellido"));
+//				chofer.setFechaNac(request.getParameter("fechaNac"));
+				chofer.setCategoria(request.getParameter("categoria"));
 
-				adminsDAO.save(admin);
+				choferesDAO.save(chofer);
 
 			} else if (request.getParameter("accion").equals("busca")) {
 
-				Admins cli = (Admins) adminsDAO.findId(Long.parseLong(request.getParameter("userID")));
+				Choferes cli = (Choferes) choferesDAO.findId(Long.parseLong(request.getParameter("userID")));
 
 			} else {
 				request.getSession().setAttribute("Error", "Tipo de accion incorrecta");

@@ -15,6 +15,7 @@ import negocio.dao.factory.AdminsFactory;
 import negocio.dao.factory.ClientesFactory;
 import negocio.dominio.Admins;
 import negocio.dominio.Clientes;
+import negocio.dominio.Trayectos;
 
 /**
  * Servlet implementation class Controller
@@ -47,41 +48,39 @@ public class DestinoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String destino;
+		String trayecto;
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Admins> adminsDAO = AdminsFactory.getImplementation("DB"); 
+			iDAO<Destino> destinoDAO = DestinoFactory.getImplementation("DB"); 
 
 			if (request.getParameter("accion").equals("alta")) {
-				Admins admin = new Admins();
+				Trayectos trayecto = new Trayectos();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
+				trayecto.setTrayectoID(request.getParameter("trayectoID"));
+				trayecto.setOrigen(request.getParameter("origen"));
+				trayecto.setDestino(request.getParameter("destino"));
+				trayecto.setDistancia(Float.parseFloat(request.getParameter("distancia")));
+		
+
+				
 //				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
 
-				adminsDAO.add(admin);
+				destinoDAO.add(destino);
 
 			} else if (request.getParameter("accion").equals("baja")) {
 
-				adminsDAO.deleteById(request.getParameter("userID"));
+				destinoDAO.deleteById(request.getParameter("userID"));
 
 			} else if (request.getParameter("accion").equals("modif")) {
-				Admins admin = new Admins();
+				Trayectos trayecto = new Trayectos();
 
-				admin.setUserID(request.getParameter("userID"));
-				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
-				admin.setContrasenia(request.getParameter("contrasenia"));
-				admin.setNombre(request.getParameter("nombre"));
-				admin.setApellido(request.getParameter("apellido"));
-				admin.setFechaNac(request.getParameter("fechaNac"));
-//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+				trayecto.setTrayectoID(request.getParameter("trayectoID"));
+				trayecto.setOrigen(request.getParameter("origen"));
+				trayecto.setDestino(request.getParameter("destino"));
+				destino.setDistancia(Float.parseFloat(request.getParameter("distancia")));
 
-				adminsDAO.save(admin);
+				trayectosDAO.save(trayecto);
 
 			} else if (request.getParameter("accion").equals("busca")) {
 
