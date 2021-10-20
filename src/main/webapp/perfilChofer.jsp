@@ -1,11 +1,21 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="negocio.dao.iDAO"%>
+<%@page import="negocio.dao.factory.ViajesFactory"%>
+<%@page import="negocio.dominio.Viajes"%>
+
+<%
+iDAO<Viajes> viajesDAO = ViajesFactory.getImplementation("DB");
+ArrayList<Viajes> viajes = viajesDAO.getLista();
+
+// ArrayList<String> generos = librosDAO.getListaGeneros();
+%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="navbar.jsp"></jsp:include>
 
 <div class="container" style="padding: 20px">
 	<form method="post" action="">
 		<div style="text-align: left;">
-			<label>Patente</label>
-			<input type="text" id="patente" name="patente" required="required" />
+			<label>Patente</label> <input type="text" id="patente" name="patente" required="required" />
 		</div>
 
 		<div style="text-align: left;">
@@ -14,7 +24,7 @@
 				<button type="submit" class="btn btn-light">Finalizar</button>
 			</p>
 		</div>
-<%-- 
+		<%-- 
 <form method="GET" action="ViajesController">
 	<td id="viajesID" name="viajesID">ID</td>
 		<% for (int i=0;i<ViajesController.get().get().size(); i++ ){ %>
@@ -23,7 +33,16 @@
 <%} %>
 </form>
 --%>
-
+		<table>
+		<tr><td>Id del viaje</td><td>Patente</td><td>Trayecto</td><td>Finalizar</td></tr>
+			<%
+			for (Viajes viaje : viajes) {
+			%>
+			<tr><td><%=viaje.get()%></td><td><%=viaje.getId()%></td><td><%=viaje.getId()%></td><td></td></tr>
+			<%
+			}
+			%>
+		</table>
 
 		<p style="text-align: left;">
 			<button type="submit" class="btn btn-light">Ingresar</button>
