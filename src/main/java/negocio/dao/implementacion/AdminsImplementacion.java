@@ -1,7 +1,10 @@
 package negocio.dao.implementacion;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
+import core.Conexion;
 import negocio.dao.iDAO;
 import negocio.dominio.Admins;
 
@@ -22,11 +25,11 @@ public class AdminsImplementacion implements iDAO<Admins> {
 
 				PreparedStatement ps = con.prepareStatement(sql);
 
-				ps.setString(1, elemento.getUserID());
+				ps.setInt(1, (int) elemento.getUserID());
 				ps.setString(2, elemento.getNombre());
 				ps.setString(3, elemento.getApellido());
 				ps.setString(4, elemento.getContrasenia());
-				ps.setString(5, elemento.getFechaNac());
+				ps.setDate(5, elemento.getFechaNac());
 				ps.setString(6, elemento.getTelefono());
 
 				ps.execute();
@@ -166,8 +169,7 @@ public class AdminsImplementacion implements iDAO<Admins> {
 		@Override
 		public boolean deleteById(long l) {
 
-			String sql = "UPDATE admins SET activo=0 WHERE userID=?";
-
+			String sql = "UPDATE admins SET activo=0 WHERE userID=?"; // es userID ? eso esta bien?
 			try {
 				Connection con = Conexion.getConnection();
 
