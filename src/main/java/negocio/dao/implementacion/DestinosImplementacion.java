@@ -3,12 +3,12 @@ package negocio.dao.implementacion;
 import java.util.ArrayList;
 
 import negocio.dao.iDAO;
-import negocio.dominio.Destinos;
+import negocio.dominio.Trayectos;
 
-public class DestinosImplementacion implements iDAO<Destinos> {
+public class DestinosImplementacion implements iDAO<Trayectos> {
 
 	@Override
-	public boolean add(Destinos elemento) {
+	public boolean add(Trayectos elemento) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -32,13 +32,13 @@ public class DestinosImplementacion implements iDAO<Destinos> {
 	}
 
 	@Override
-	public ArrayList<Destinos> getLista() {
+	public ArrayList<Trayectos> getLista() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Destinos findId(long l) {
+	public Trayectos findId(long l) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,6 +3,8 @@ package negocio.dominio;
 import java.util.*;
 
 public class Admins extends Users {
+	
+	public Admins () {}
 
 	public Admins(int userID, Calendar fechaNac, String contrasenia, String nombre, String apellido) {
 		super();
