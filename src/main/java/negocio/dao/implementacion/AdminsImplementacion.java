@@ -10,77 +10,46 @@ import negocio.dominio.Admins;
 
 public class AdminsImplementacion implements iDAO<Admins> {
 
-////////////////////////////////
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	public boolean add(Admins elemento) {
 
+		String sql = "INSERT INTO admins(userID, nombre, apellido, contrasenia, fechaNac, telefono) VALUES (?,?,?,?,?,?)";
 
-		@Override
-		@Override
-		@Override
-		public boolean add(Admins elemento) {
+		try {
+			Connection con = Conexion.getConnection();
 
-			String sql = "INSERT INTO admins(userID, nombre, apellido, contrasenia, fechaNac, telefono) VALUES (?,?,?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
 
-			try {
-				Connection con = Conexion.getConnection();
+			ps.setInt(1, (int) elemento.getUserID());
+			ps.setString(2, elemento.getNombre());
+			ps.setString(3, elemento.getApellido());
+			ps.setString(4, elemento.getContrasenia());
+			ps.setDate(5, elemento.getFechaNac());
+			ps.setString(6, elemento.getTelefono());
 
-				PreparedStatement ps = con.prepareStatement(sql);
+			ps.execute();
 
-				ps.setInt(1, (int) elemento.getUserID());
-				ps.setString(2, elemento.getNombre());
-				ps.setString(3, elemento.getApellido());
-				ps.setString(4, elemento.getContrasenia());
-				ps.setDate(5, elemento.getFechaNac());
-				ps.setString(6, elemento.getTelefono());
+			ps.close();
 
-				ps.execute();
-
-				ps.close();
-
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return false;
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public Object get(Object elemento) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		return false;
+	}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public boolean save() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public boolean delete() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
 		@Override
 		@Override
 		@Override
@@ -123,71 +92,113 @@ public class AdminsImplementacion implements iDAO<Admins> {
 			return admin;
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public Admins findId(long l) {
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	public Admins findId(long l) {
 
-			Connection con = null;
-			PreparedStatement prep = null;
+		Connection con = null;
+		PreparedStatement prep = null;
 
-			try {
-				String sql = "SELECT * FROM users WHERE id=?";
+		try {
+			String sql = "SELECT * FROM users WHERE id=?";
 
-				con = Conexion.getConnection();
-				prep = con.prepareStatement(sql);
+			con = Conexion.getConnection();
+			prep = con.prepareStatement(sql);
 
-				prep.setInt(1, (int) id);
+			prep.setInt(1, (int) id);
 
-				ResultSet rs = prep.executeQuery();
+			ResultSet rs = prep.executeQuery();
 
-				Admins admin = new Admins();
+			Admins admin = new Admins();
 
-				if (rs.next()) {
-					admin.setUserID(rs.getLong("userID"));
-					admin.setNombre(rs.getString("nombre"));
-					admin.setApellido(rs.getString("apellido"));
-					admin.setContrasenia(rs.getString("contrasenia"));
-					admin.setFechaNac(rs.getString("contrasenia"));
-					admin.setTelefono(rs.getLong("telefono"));
+			if (rs.next()) {
+				admin.setUserID(rs.getLong("userID"));
+				admin.setNombre(rs.getString("nombre"));
+				admin.setApellido(rs.getString("apellido"));
+				admin.setContrasenia(rs.getString("contrasenia"));
+				admin.setFechaNac(rs.getString("contrasenia"));
+				admin.setTelefono(rs.getLong("telefono"));
 
-				}
-				return admin;
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
 			}
+			return admin;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	@Override
+	@Override
+	@Override
+	@Overridepublic
+	boolean save(Admins elemento) {
+
+		String sql = "UPDATE admins SET nombre=?, apellido=?, contrasenia=?, fechaNac=?, telefono=? WHERE userID=?"; // es
+																														// userID
+		try {
+			Connection con = Conexion.getConnection();
+
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setString(1, elemento.getNombre());
+			ps.setString(2, elemento.getApellido());
+			ps.setString(3, elemento.getContrasenia());
+			ps.setDate(4, elemento.getFechaNac());
+			ps.setString(5, elemento.getTelefono());
+			ps.setLong(6, elemento.getUserID());
+
+			ps.execute();
+
+			ps.close();
+
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		public boolean deleteById(long l) {
+		return false;
+	}
 
-			String sql = "UPDATE admins SET activo=0 WHERE userID=?"; // es userID ? eso esta bien?
-			try {
-				Connection con = Conexion.getConnection();
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	@Override
+	public boolean deleteById(long l) {
 
-				PreparedStatement ps = con.prepareStatement(sql);
+		String sql = "UPDATE admins SET activo=0 WHERE userID=?"; // es userID ? eso esta bien?
+		try {
+			Connection con = Conexion.getConnection();
 
-				ps.setLong(1, l);
+			PreparedStatement ps = con.prepareStatement(sql);
 
-				ps.execute();
+			ps.setLong(1, l);
 
-				ps.close();
+			ps.execute();
 
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			ps.close();
 
-			return false;
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		return false;
+	}
 
 }

@@ -31,4 +31,6 @@ public interface iDAO<T> {
 	public T findId(long l);
 
 	public boolean deleteById(long l);
+
+	public boolean save(T elemento);
 }

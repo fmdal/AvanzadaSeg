@@ -14,182 +14,134 @@ import negocio.dominio.Users;
 
 public class CamionesImplementacion implements iDAO<Camiones> {
 
-		@Override
-		@Override
-		@Override
-		public boolean add(Camiones elemento) {
+	@Override
+	public boolean add(Camiones elemento) {
 
-			String sql = "INSERT INTO camiones(patente, marca, modelo, tanqueNafta, pesoMax, litrosxKm) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO camiones(patente, marca, modelo, tanqueNafta, pesoMax, litrosxKm) VALUES (?,?,?,?,?,?)";
 
-			try {
-				Connection con = Conexion.getConnection();
+		try {
+			Connection con = Conexion.getConnection();
 
-				PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
 
-				ps.setString(1, elemento.getPatente());
-				ps.setString(2, elemento.getMarca());
-				ps.setString(3, elemento.getModelo());
-				ps.setString(4, elemento.getTanqueNafta());
-				ps.setString(5, elemento.getPesoMax());
-				ps.setString(6, elemento.getLitrosxKm());
+			ps.setString(1, elemento.getPatente());
+			ps.setString(2, elemento.getMarca());
+			ps.setString(3, elemento.getModelo());
+			ps.setString(4, elemento.getTanqueNafta());
+			ps.setString(5, elemento.getPesoMax());
+			ps.setString(6, elemento.getLitrosxKm());
 
-				ps.execute();
+			ps.execute();
 
-				ps.close();
+			ps.close();
 
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return false;
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public Object get(Object elemento) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		return false;
+	}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public boolean save() {
-			// TODO Auto-generated method stub
-			return false;
-		}
+	@Override
+	@Override
+	@Override
+	public ArrayList<Users> getLista() {
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public boolean delete() {
-			// TODO Auto-generated method stub
-			return false;
-		}
+		ArrayList<Camiones> camiones = new ArrayList<>();
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public ArrayList<Users> getLista() {
+		Connection con = null;
+		PreparedStatement prep = null;
 
-			ArrayList<Camiones> camiones = new ArrayList<>();
+		try {
+			con = Conexion.getConnection();
+			prep = con.prepareStatement("SELECT * FROM camiones");
 
-			Connection con = null;
-			PreparedStatement prep = null;
+			ResultSet rs = prep.executeQuery();
 
-			try {
-				con = Conexion.getConnection();
-				prep = con.prepareStatement("SELECT * FROM camiones");
-
-				ResultSet rs = prep.executeQuery();
-
-				while (rs.next()) {
-
-					Camiones camion = new Camiones();
-
-					camion.setPatente(rs.getString("patente"));
-					camion.setMarca(rs.getString("marca"));
-					camion.setModelo(rs.getString("modelo"));
-					camion.setTanqueNafta(rs.getdouble("tanqueNafta"));
-					camion.setPesoMax(rs.getDouble("pesoMax"));
-					camion.setListrosxKm(rs.getDouble("litrosxKm"));
-					camiones.add(camion);
-				}
-				prep.close();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			return camiones;
-		}
-
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		public Camion findId(long l) {
-
-			Connection con = null;
-			PreparedStatement prep = null;
-
-			try {
-				String sql = "SELECT * FROM camiones WHERE patente=?";
-
-				con = Conexion.getConnection();
-				prep = con.prepareStatement(sql);
-
-				prep.setInt(1, (int) id);
-
-				ResultSet rs = prep.executeQuery();
+			while (rs.next()) {
 
 				Camiones camion = new Camiones();
 
-				if (rs.next()) {
-					camion.setUserID(rs.getString("patente"));
-					camion.setNombre(rs.getString("marca"));
-					camion.setApellido(rs.getString("modelo"));
-					camion.setContrasenia(rs.getdouble("tanqueNafta"));
-					camion.setFechaNac(rs.getDouble("pesoMax"));
-					camion.setTelefono(rs.getDouble("litrosxKm"));
-
-
-				}
-				return camion;
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
+				camion.setPatente(rs.getString("patente"));
+				camion.setMarca(rs.getString("marca"));
+				camion.setModelo(rs.getString("modelo"));
+				camion.setTanqueNafta(rs.getdouble("tanqueNafta"));
+				camion.setPesoMax(rs.getDouble("pesoMax"));
+				camion.setListrosxKm(rs.getDouble("litrosxKm"));
+				camiones.add(camion);
 			}
+			prep.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		public boolean deleteById(long l) {
+		return camiones;
+	}
 
-			String sql = "UPDATE users SET activo=0 WHERE patente=?";
+	@Override
+	@Override
+	@Override
+	public Camion findId(long l) {
 
-			try {
-				Connection con = Conexion.getConnection();
+		Connection con = null;
+		PreparedStatement prep = null;
 
-				PreparedStatement ps = con.prepareStatement(sql);
+		try {
+			String sql = "SELECT * FROM camiones WHERE patente=?";
 
-				ps.setLong(1, l);
+			con = Conexion.getConnection();
+			prep = con.prepareStatement(sql);
 
-				ps.execute();
+			prep.setInt(1, (int) id);
 
-				ps.close();
+			ResultSet rs = prep.executeQuery();
 
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			Camiones camion = new Camiones();
+
+			if (rs.next()) {
+				camion.setUserID(rs.getString("patente"));
+				camion.setNombre(rs.getString("marca"));
+				camion.setApellido(rs.getString("modelo"));
+				camion.setContrasenia(rs.getdouble("tanqueNafta"));
+				camion.setFechaNac(rs.getDouble("pesoMax"));
+				camion.setTelefono(rs.getDouble("litrosxKm"));
+
 			}
-
-			return false;
+			return camion;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-	
+	}
+
+	@Override
+	@Override
+	@Override
+	public boolean deleteById(long l) {
+
+		String sql = "UPDATE camiones SET activo=0 WHERE patente=?";
+
+		try {
+			Connection con = Conexion.getConnection();
+
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setLong(1, l);
+
+			ps.execute();
+
+			ps.close();
+
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
 }

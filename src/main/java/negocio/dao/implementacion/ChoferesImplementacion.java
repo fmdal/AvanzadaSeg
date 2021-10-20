@@ -9,12 +9,11 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 import core.Conexion;
 import negocio.dao.iDAO;
-import negocio.dominio.Camiones;
 import negocio.dominio.Choferes;
-import negocio.dominio.Users;
 
 public class ChoferesImplementacion implements iDAO<Choferes> {
 
+	@Override
 	@Override
 	@Override
 	@Override
@@ -49,47 +48,6 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 		return false;
 	}
 
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	public Object get(Object elemento) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	public boolean save() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	public boolean delete() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
 	@Override
 	@Override
 	public ArrayList<Choferes> getLista() {
@@ -136,6 +94,7 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 	@Override
 	@Override
 	@Override
+	@Override
 	public Choferes findId(long l) {
 
 		Connection con = null;
@@ -171,6 +130,7 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 		}
 	}
 
+	@Override
 	@Override
 	@Override
 	@Override
