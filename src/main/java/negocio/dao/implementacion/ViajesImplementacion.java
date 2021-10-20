@@ -45,24 +45,14 @@ public class ViajesImplementacion implements iDAO<Viajes> {
 			return false;
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
+
 		@Override
 		public Object get(Object elemento) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
+
 		@Override
 		public boolean save() {
 			// TODO Auto-generated method stub
@@ -70,23 +60,12 @@ public class ViajesImplementacion implements iDAO<Viajes> {
 		}
 
 		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
+
 		public boolean delete() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
 		@Override
 		public ArrayList<Viajes> getLista() {
 

@@ -15,6 +15,13 @@
 			</p>
 		</div>
 
+<form method="GET" action="ViajesController">
+	<td id="viajesID" name="viajesID">ID</td>
+		<% for (int i=0;i<ViajesController.getCh().getListaViaje().size(); i++ ){ %>
+	<td><%= sl.getCh().getListaViaje().get(i).getIdViaje()  %></td>
+	<td><%= sl.getCh().getListaViaje().get(i).getDestino()  %></td>
+<%} %>
+</form>
 
 
 

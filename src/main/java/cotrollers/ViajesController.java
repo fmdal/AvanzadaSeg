@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 import negocio.dao.iDAO;
+import negocio.dao.factory.AdminsFactory;
+import negocio.dominio.Admins;
 
 /**
  * Servlet implementation class Controller
@@ -47,12 +49,42 @@ public class ViajesController extends HttpServlet {
 
 		if (request.getParameter("accion") != null) {
 
-			iDAO<Viajes> clienteDAO = ViajesFactory.getImplementation("BB");
+			iDAO<Admins> adminsDAO = AdminsFactory.getImplementation("DB"); 
 
 			if (request.getParameter("accion").equals("alta")) {
+				Admins admin = new Admins();
+
+				admin.setUserID(request.getParameter("userID"));
+				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				admin.setContrasenia(request.getParameter("contrasenia"));
+				admin.setNombre(request.getParameter("nombre"));
+				admin.setApellido(request.getParameter("apellido"));
+				admin.setFechaNac(request.getParameter("fechaNac"));
+//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+
+				adminsDAO.add(admin);
+
 			} else if (request.getParameter("accion").equals("baja")) {
+
+				adminsDAO.deleteById(request.getParameter("userID"));
+
 			} else if (request.getParameter("accion").equals("modif")) {
+				Admins admin = new Admins();
+
+				admin.setUserID(request.getParameter("userID"));
+				admin.setTelefono(Long.parseLong(request.getParameter("telefono")));
+				admin.setContrasenia(request.getParameter("contrasenia"));
+				admin.setNombre(request.getParameter("nombre"));
+				admin.setApellido(request.getParameter("apellido"));
+				admin.setFechaNac(request.getParameter("fechaNac"));
+//				admin.setTelefono(Long.parseLong(request.getParameter("listaViajes")));
+
+				adminsDAO.save(admin);
+
 			} else if (request.getParameter("accion").equals("busca")) {
+
+				Admins cli = (Admins) adminsDAO.findId(Long.parseLong(request.getParameter("userID")));
+
 			} else {
 				request.getSession().setAttribute("Error", "Tipo de accion incorrecta");
 				destino = "error.jsp";
