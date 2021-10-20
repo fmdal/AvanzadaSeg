@@ -14,8 +14,7 @@ import negocio.dominio.Users;
 public class UsersImplementacion implements iDAO<Users> {
 
 	@Override
-	@Override
-	@Override
+
 	public boolean add(Users elemento) {
 
 		String sql = "INSERT INTO users(userID, nombre, apellido, contrasenia, fechaNac, telefono) VALUES (?,?,?,?,?,?)";
@@ -25,11 +24,11 @@ public class UsersImplementacion implements iDAO<Users> {
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setString(1, elemento.getUserID());
+			ps.setInt(1, elemento.getUserID());
 			ps.setString(2, elemento.getNombre());
 			ps.setString(3, elemento.getApellido());
 			ps.setString(4, elemento.getContrasenia());
-			ps.setString(5, elemento.getFechaNac());
+//			ps.setString(5, elemento.getFechaNac());
 			ps.setString(6, elemento.getTelefono());
 
 			ps.execute();
@@ -46,48 +45,28 @@ public class UsersImplementacion implements iDAO<Users> {
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public Object get(Object elemento) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public boolean save() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public boolean delete() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public ArrayList<Users> getLista() {
 
 		ArrayList<Users> usuarios = new ArrayList<>();
@@ -124,12 +103,7 @@ public class UsersImplementacion implements iDAO<Users> {
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public Users findId(long l) {
 
 		Connection con = null;
@@ -164,9 +138,7 @@ public class UsersImplementacion implements iDAO<Users> {
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
+
 	public boolean deleteById(long l) {
 
 		String sql = "UPDATE users SET activo=0 WHERE userID=?";

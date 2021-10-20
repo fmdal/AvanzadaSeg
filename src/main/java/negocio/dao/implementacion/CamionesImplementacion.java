@@ -27,9 +27,9 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 			ps.setString(1, elemento.getPatente());
 			ps.setString(2, elemento.getMarca());
 			ps.setString(3, elemento.getModelo());
-			ps.setString(4, elemento.getTanqueNafta());
-			ps.setString(5, elemento.getPesoMax());
-			ps.setString(6, elemento.getLitrosxKm());
+			ps.setDouble(4, elemento.getTanqueNafta());
+			ps.setDouble(5, elemento.getPesoMax());
+			ps.setDouble(6, elemento.getLitrosxKm());
 
 			ps.execute();
 
@@ -45,8 +45,7 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 	}
 
 	@Override
-	@Override
-	@Override
+
 	public ArrayList<Users> getLista() {
 
 		ArrayList<Camiones> camiones = new ArrayList<>();
@@ -82,8 +81,7 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 	}
 
 	@Override
-	@Override
-	@Override
+
 	public Camion findId(long l) {
 
 		Connection con = null;
@@ -118,8 +116,7 @@ public class CamionesImplementacion implements iDAO<Camiones> {
 	}
 
 	@Override
-	@Override
-	@Override
+
 	public boolean deleteById(long l) {
 
 		String sql = "UPDATE camiones SET activo=0 WHERE patente=?";

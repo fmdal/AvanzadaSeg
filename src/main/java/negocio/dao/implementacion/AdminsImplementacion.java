@@ -11,11 +11,7 @@ import negocio.dominio.Admins;
 public class AdminsImplementacion implements iDAO<Admins> {
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public boolean add(Admins elemento) {
 
 		String sql = "INSERT INTO admins(userID, nombre, apellido, contrasenia, fechaNac, telefono) VALUES (?,?,?,?,?,?)";
@@ -29,7 +25,7 @@ public class AdminsImplementacion implements iDAO<Admins> {
 			ps.setString(2, elemento.getNombre());
 			ps.setString(3, elemento.getApellido());
 			ps.setString(4, elemento.getContrasenia());
-			ps.setDate(5, elemento.getFechaNac());
+//			ps.setDate(5, elemento.getFechaNac());
 			ps.setString(6, elemento.getTelefono());
 
 			ps.execute();
@@ -46,17 +42,7 @@ public class AdminsImplementacion implements iDAO<Admins> {
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
-		@Override
+
 		public ArrayList<Admins> getLista() {
 
 			ArrayList<Admins> usuarios = new ArrayList<>();
@@ -93,17 +79,7 @@ public class AdminsImplementacion implements iDAO<Admins> {
 		}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public Admins findId(long l) {
 
 		Connection con = null;
@@ -138,10 +114,7 @@ public class AdminsImplementacion implements iDAO<Admins> {
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Overridepublic
+
 	boolean save(Admins elemento) {
 
 		String sql = "UPDATE admins SET nombre=?, apellido=?, contrasenia=?, fechaNac=?, telefono=? WHERE userID=?"; // es
@@ -154,7 +127,7 @@ public class AdminsImplementacion implements iDAO<Admins> {
 			ps.setString(1, elemento.getNombre());
 			ps.setString(2, elemento.getApellido());
 			ps.setString(3, elemento.getContrasenia());
-			ps.setDate(4, elemento.getFechaNac());
+//			ps.setDate(4, elemento.getFechaNac());
 			ps.setString(5, elemento.getTelefono());
 			ps.setLong(6, elemento.getUserID());
 
@@ -172,12 +145,7 @@ public class AdminsImplementacion implements iDAO<Admins> {
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public boolean deleteById(long l) {
 
 		String sql = "UPDATE admins SET activo=0 WHERE userID=?"; // es userID ? eso esta bien?

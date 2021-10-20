@@ -2,6 +2,7 @@ package negocio.dao.implementacion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,9 +15,7 @@ import negocio.dominio.Choferes;
 public class ChoferesImplementacion implements iDAO<Choferes> {
 
 	@Override
-	@Override
-	@Override
-	@Override
+
 	public boolean add(Choferes elemento) {
 
 		String sql = "INSERT INTO choferes(userID, nombre, apellido, contrasenia, fechaNac, telefono, categoria, listaCamiones) VALUES (?,?,?,?,?,?,?,?)";
@@ -26,14 +25,14 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setString(1, elemento.getUserID());
+			ps.setInt(1, elemento.getUserID());
 			ps.setString(2, elemento.getNombre());
 			ps.setString(3, elemento.getApellido());
 			ps.setString(4, elemento.getContrasenia());
-			ps.setString(5, elemento.getFechaNac());
+//			ps.setDate(5, elemento.getFechaNac());
 			ps.setString(6, elemento.getTelefono());
 			ps.setString(7, elemento.getCategoria());
-			ps.setString(8, elemento.getListaCamiones());
+//			ps.setString(8, elemento.getListaCamiones());
 
 			ps.execute();
 
@@ -49,7 +48,7 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 	}
 
 	@Override
-	@Override
+
 	public ArrayList<Choferes> getLista() {
 
 		ArrayList<Choferes> chofer = new ArrayList<>();
@@ -84,24 +83,18 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 			e.printStackTrace();
 		}
 
-		return choferes;
+		return chofer;
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public Choferes findId(long l) {
 
 		Connection con = null;
 		PreparedStatement prep = null;
 
 		try {
-			String sql = "SELECT * FROM choferes WHERE id=?";
+			String sql = "SELECT * FROM choferes WHERE userID=?";
 
 			con = Conexion.getConnection();
 			prep = con.prepareStatement(sql);
@@ -113,15 +106,14 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 			Choferes chofer = new Choferes();
 
 			if (rs.next()) {
-				chofer.setUserID(rs.getLong("userID"));
+				chofer.setUserID(rs.getInt("userID"));
 				chofer.setNombre(rs.getString("nombre"));
 				chofer.setApellido(rs.getString("apellido"));
 				chofer.setContrasenia(rs.getString("contrasenia"));
-				chofer.setFechaNac(rs.getString("contrasenia"));
-				chofer.setTelefono(rs.getLong("telefono"));
+//				chofer.setFechaNac(rs.getString("contrasenia"));
+				chofer.setTelefono(rs.getString("telefono"));
 				chofer.setCategoria(rs.getString("categoria"));
-				chofer.setListaCamiones(rs.getLong("listaCamiones"));
-
+//				chofer.setListaCamiones(rs.getLong("listaCamiones"));
 			}
 			return chofer;
 		} catch (Exception e) {
@@ -131,10 +123,7 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 	}
 
 	@Override
-	@Override
-	@Override
-	@Override
-	@Override
+
 	public boolean deleteById(long l) {
 
 		String sql = "UPDATE choferes SET activo=0 WHERE userID=?";
@@ -155,8 +144,6 @@ public class ChoferesImplementacion implements iDAO<Choferes> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return false;
 	}
-
 }

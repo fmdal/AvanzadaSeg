@@ -6,7 +6,7 @@ public class Admins extends Users {
 	
 	public Admins () {}
 
-	public Admins(int userID, Calendar fechaNac, String contrasenia, String nombre, String apellido) {
+	public Admins(int userID, Calendar fechaNac, String contrasenia, String nombre, String telefono, String apellido) {
 		super();
 		this.userID = userID;
 		this.fechaNac = fechaNac;

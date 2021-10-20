@@ -9,7 +9,7 @@ public class Choferes extends Users {
 
 	public Choferes () {}
 	
-	public Choferes(int userID, Calendar fechaNac, String contrasenia, String nombre, String apellido, String categoria, ArrayList<Camiones> listaCamiones) {
+	public Choferes(int userID, Calendar fechaNac, String contrasenia, String nombre, String apellido, String categoria, String telefono, ArrayList<Camiones> listaCamiones) {
 		
 		super();
 		this.userID = userID;
