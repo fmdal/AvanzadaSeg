@@ -14,15 +14,15 @@
 				<button type="submit" class="btn btn-light">Finalizar</button>
 			</p>
 		</div>
-
+<%-- 
 <form method="GET" action="ViajesController">
 	<td id="viajesID" name="viajesID">ID</td>
-		<% for (int i=0;i<ViajesController.getCh().getListaViaje().size(); i++ ){ %>
-	<td><%= sl.getCh().getListaViaje().get(i).getIdViaje()  %></td>
-	<td><%= sl.getCh().getListaViaje().get(i).getDestino()  %></td>
+		<% for (int i=0;i<ViajesController.get().get().size(); i++ ){ %>
+	<td><%= sl.get().get().get(i).getIdViaje()  %></td>
+	<td><%= sl.get().get().get(i).getDestino()  %></td>
 <%} %>
 </form>
-
+--%>
 
 
 		<p style="text-align: left;">
