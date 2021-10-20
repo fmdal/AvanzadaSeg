@@ -2,7 +2,7 @@
 <jsp:include page="navbar.jsp"></jsp:include>
 
 <div class="container" style="padding: 20px">
-	<form method="post" action="">
+	<form method="post" action="UsersController">
 		<div style="text-align: center;">
 			<label>DNI</label>
 			<input type="text" id="user" name="user" required="required" />
@@ -12,6 +12,8 @@
 			<input type="password" id="pass" name="pass" required="required" />
 		</div>
 
+		<input id="accion" name="accion" type="hidden" value="login">
+		
 		<p style="text-align: center;">
 			<button type="submit" class="btn btn-primary">Ingresar</button>
 		</p>
