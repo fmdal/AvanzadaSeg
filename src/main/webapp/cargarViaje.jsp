@@ -5,44 +5,30 @@
 	<form method="post" action="ViajesController">
 
 <div style="text-align: left;">
-			<label>DNI</label>
-			<input type="text" id="userID" name="userID" required="required" />
-		</div>
-		
-				<div style="text-align: center;">
-			<br /> <label>Contraseña</label>
-			<input type="password" id="pass" name="pass" required="required" />
-		</div>
-
-		<div style="text-align: left;">
-			<label>Nombre</label>
-			<input type="text" id="nombre" name="nombre" required="required" />
-		</div>
-
-		<div style="text-align: left;">
-			<label>Apellido</label>
-			<input type="text" id="apellido" name="apellido" required="required" />
+			<label>Id de viajes</label>
+			<input type="text" id="viajesID" name="viajesID" required="required" />
 		</div>
 		
 		<div style="text-align: left;">
-			<label>Fecha de nacimiento</label>
-			<input type="text" id="fechaNac" name="fechaNac" required="required" />
+			<label>Chofer</label>
+			<input type="text" id="chofer" name="chofer" required="required" />
 		</div>
 
 		<div style="text-align: left;">
-			<label>Telefono</label>
-			<input type="text" id="telefono" name="telefono" required="required" />
+			<label>Camion</label>
+			<input type="text" id="camion" name="camion" required="required" />
+		</div>
+		
+		<div style="text-align: left;">
+			<label>Consumo de nafta</label>
+			<input type="text" id="consumoNafta" name="consumoNafta" required="required" />
+		</div>
+
+		<div style="text-align: left;">
+			<label>Trayecto destino</label>
+			<input type="text" id="trayecto" name="trayecto" required="required" />
 		</div>
 	
-			<div style="text-align: left;">
-			<label>Categoria</label>
-			<input type="text" id="litrosxKm" name="litrosxKm" required="required" />
-		</div>
-		
-					<div style="text-align: left;">
-			<label>Lista de Camiones</label>
-			<input type="text" id="listaCamiones" name="listaCamiones" required="required" />
-		</div>
 
 		<input id="accion" name="accion" type="hidden" value="alta">
 

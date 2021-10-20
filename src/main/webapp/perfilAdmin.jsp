@@ -4,13 +4,10 @@
 <div class="container" style="padding: 20px">
 	<form method="post" action="">
 
-		<div style="text-align: left;">
-			<label>Patente</label>
-			<input type="text" id="patente" name="patente" required="required" />
-		</div>
+
 
 		<p style="text-align: left;">
-			<button type="submit" class="btn btn-light">Ingresar</button>
+			<button type="submit" class="btn btn-light">Cerrar sesion</button>
 		</p>
 
 		<a type="button" class="btn btn-dark" href="http://localhost:8080/AvanzadaSeg/perfilAdmin.jsp">Volver</a>
